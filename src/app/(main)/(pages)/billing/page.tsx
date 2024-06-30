@@ -1,9 +1,8 @@
 import React from "react";
 import Stripe from "stripe";
 import { db } from "@/lib/db";
-import { list } from "postcss";
-import { currentUser } from "@clerk/nextjs/server";
 import BillingDashboard from "./_components/billing-dashboard";
+import { currentUser } from "@clerk/nextjs/server";
 
 type Props = {
   searchParams?: { [key: string]: string | undefined };
@@ -16,8 +15,9 @@ const Billing = async (props: Props) => {
   if (session_id) {
     const stripe = new Stripe(process.env.STRIPE_SECRET!, {
       typescript: true,
-      apiVersion: "2024-06-20", // if this not works add 2023-10=16 as the api version
+      apiVersion: "2024-06-20",
     });
+
     const session = await stripe.checkout.sessions.listLineItems(session_id);
     const user = await currentUser();
     if (user) {
@@ -37,6 +37,7 @@ const Billing = async (props: Props) => {
       });
     }
   }
+
   return (
     <div className="flex flex-col gap-4">
       <h1 className="sticky top-0 z-[10] flex items-center justify-between border-b bg-background/50 p-6 text-4xl backdrop-blur-lg">
@@ -46,4 +47,5 @@ const Billing = async (props: Props) => {
     </div>
   );
 };
+
 export default Billing;
