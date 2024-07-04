@@ -19,7 +19,7 @@ export async function GET() {
     userId,
     "oauth_google"
   );
-  const accessToken = clerkResponse.data[0].token; // Can cause issues
+  const accessToken = clerkResponse[0].token; // Access the first element of the array
   oauth2Client.setCredentials({
     access_token: accessToken,
   });
