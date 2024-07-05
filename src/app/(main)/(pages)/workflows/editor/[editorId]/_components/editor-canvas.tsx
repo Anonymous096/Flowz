@@ -177,7 +177,7 @@ const EditorCanvas = (props: Props) => {
 
   useEffect(() => {
     onGetWorkFlow();
-  }, []);
+  });
   return (
     <ResizablePanelGroup direction="horizontal">
       <ResizablePanel defaultSize={70}>

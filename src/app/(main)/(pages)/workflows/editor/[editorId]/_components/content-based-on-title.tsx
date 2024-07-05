@@ -65,7 +65,7 @@ const ContentBasedOnTitle = ({
       }
     };
     reqGoogle();
-  }, []);
+  });
 
   // @ts-ignore
   const nodeConnectionType: any = nodeConnection[nodeMapper[title]];

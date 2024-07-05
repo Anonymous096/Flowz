@@ -22,7 +22,7 @@ const UploadCareButton = ({ onUpload }: Props) => {
       }
     };
     ctxProviderRef.current?.addEventListener("file-uploaded", handleUpload);
-  }, []);
+  });
   return (
     <div>
       <lr-config ctx-name="my-uploader" pubkey="7a2e48cd57c246913c51" />
